@@ -7,6 +7,9 @@ plugins {
     kotlin("plugin.serialization")
 }
 
+
+
+
 android {
     namespace = "com.example.tempsdeflors"
     compileSdk = 35
@@ -23,6 +26,31 @@ android {
             useSupportLibrary = true
         }
     }
+
+    // --- FLAVORS ---
+    flavorDimensions += "edicio"
+
+    productFlavors {
+        create("tempsdeflors2025") {
+            dimension = "edicio"
+            applicationId = "com.example.tempsdeflors2025"
+            versionName = "1.0-2025"
+            resValue("string", "app_name", "Temps de flors 2025")
+        }
+
+        create("tempsdeflors2026") {
+            dimension = "edicio"
+            applicationId = "com.example.tempsdeflors2026"
+            versionName = "1.0-2026"
+            resValue("string", "app_name", "Temps de flors 2026")
+        }
+    }
+    // --------------------------------
+
+
+
+
+
 
     buildTypes {
         release {
@@ -110,4 +138,5 @@ dependencies {
 
     implementation("dev.chrisbanes.accompanist:accompanist-glide:0.4.2")
 
+    implementation("androidx.core:core-splashscreen:1.0.1")
 }

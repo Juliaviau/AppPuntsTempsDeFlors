@@ -30,13 +30,23 @@
             android:name="android.support.FILE_PROVIDER_PATHS"
             android:resource="@xml/provider_paths" />
     </provider>
+
         <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.App.Starting"
+            android:label="@string/app_name"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--activity
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.TempsDeFlors">
         </activity>
-
         <activity
             android:name=".SplashScreen"
             android:exported="true"
@@ -45,7 +55,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity-->
 
         <meta-data
             android:name="preloaded_fonts"

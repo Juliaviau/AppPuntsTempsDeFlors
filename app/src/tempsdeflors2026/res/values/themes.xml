@@ -10,7 +10,7 @@
     <!-- L'estil de la SplashScreen -->
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
         <!-- Color del fons de la pantalla -->
-        <item name="windowSplashScreenBackground">#A2D9C5</item>
+        <item name="windowSplashScreenBackground">#0f2c2a</item>
 
         <!-- Icona central (pot ser un vector, PNG o una icona animada) -->
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo70_shw</item>
