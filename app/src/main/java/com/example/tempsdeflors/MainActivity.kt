@@ -124,7 +124,9 @@ private var dadesCarregades by mutableStateOf(false)
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-
+/*
+* SISTEMA DE PUNTUACIO AMB ESTRELLES PER A CADA PUNT PER VALORAR SI HA AGRADAT O NO, I APARTAT AMB ELS PUNTS ORDENATS PER PUNTUACIO
+* TAMBE ORDENATS PER VISITA (?)*/
         val splashScreen = installSplashScreen()
 
         super.onCreate(savedInstanceState)
