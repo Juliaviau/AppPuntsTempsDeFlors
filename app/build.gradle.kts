@@ -97,6 +97,15 @@ dependencies {
     implementation(libs.androidx.benchmark.macro)
     implementation(libs.androidx.ui.text.google.fonts)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.layout.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -139,4 +148,19 @@ dependencies {
     implementation("dev.chrisbanes.accompanist:accompanist-glide:0.4.2")
 
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    // Llibreries principals de Compose
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.foundation:foundation-layout") // Aquesta és la de fillMaxWidth
+    implementation("androidx.compose.material3:material3") // O material si uses la v2
+
+    // Per a la navegació i integració amb Activity
+    implementation("androidx.activity:activity-compose:1.8.2")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // Tooling i Preview
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    debugImplementation("androidx.compose.ui:ui-tooling")
 }

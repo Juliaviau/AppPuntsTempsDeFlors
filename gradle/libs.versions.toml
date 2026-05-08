@@ -15,7 +15,8 @@ uiTextGoogleFonts = "1.8.1"
 runtimeLivedata = "1.8.1"
 
 camerax = "1.5.0-alpha06"
-accompanist = "0.37.2" # or whatever matches with your Compose version
+accompanist = "0.37.2"
+foundationLayoutAndroid = "1.6.6" # or whatever matches with your Compose version
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,6 +49,7 @@ androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycl
 androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "camerax" }
 # The helper library to grant the camera permission
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
+androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version.ref = "foundationLayoutAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -50,8 +50,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Place
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DrawerState
@@ -124,9 +127,7 @@ private var dadesCarregades by mutableStateOf(false)
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-/*
-* SISTEMA DE PUNTUACIO AMB ESTRELLES PER A CADA PUNT PER VALORAR SI HA AGRADAT O NO, I APARTAT AMB ELS PUNTS ORDENATS PER PUNTUACIO
-* TAMBE ORDENATS PER VISITA (?)*/
+
         val splashScreen = installSplashScreen()
 
         super.onCreate(savedInstanceState)
@@ -201,6 +202,18 @@ fun PantallaMapa() {
                             .padding(16.dp)
                             .align(Alignment.CenterHorizontally)
                     )
+                    Button(
+                        onClick = {
+                            scope.launch { drawerState.close() }
+                            navController.navigate("visitats")
+                        },
+                        modifier = Modifier.fillMaxWidth().padding(16.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.colorpred))
+                    ) {
+                        Icon(Icons.Default.List, contentDescription = null)
+                        Spacer(Modifier.width(8.dp))
+                        Text("Veure llocs visitats")
+                    }
                     LazyColumn(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -275,6 +288,7 @@ fun PantallaMapa() {
                     .fillMaxSize()
             ) {
                 composable("map") { OsmMapView() }
+                composable("visitats") {LlistaVisitatsView(navController, punts)}
             }
         }
     }
