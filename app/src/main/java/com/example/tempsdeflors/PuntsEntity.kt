@@ -9,5 +9,6 @@ data class PuntsEntity(
     val ruta: String, //ruta1,ruta2,ruta3,accessible
     val data: String,
     var visitat: String,
-    var fotoUri: String? = null
+    var fotoUri: String? = null,
+    var estrelles: Int = 0
 )

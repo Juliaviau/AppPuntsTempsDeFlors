@@ -52,6 +52,16 @@ class InfoPuntMarker(private val mapView: MapView,  private val fotoCallback: Fo
 
         val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
 
+        // Suponiendo que en PuntRepository has creado una función para obtener la nota actual
+        val notaGuardada = PuntRepository.getEstrellesByNumero(punt.numero) ?: 0
+        Log.i("InfoPuntMarker", "nota guardada: $notaGuardada")
+        gestionarEstrelles(punt.numero, notaGuardada)
+
+        // Si el punto no está visitado, quizás quieras esconder las estrellas:
+        val layoutEstrelles = mView.findViewById<View>(R.id.layout_estrelles)
+        layoutEstrelles.visibility = if (visitat) View.VISIBLE else View.GONE
+
+
         titleView.text = marker.title
         descView.text = marker.subDescription
         subDescView.text = marker.snippet
@@ -82,8 +92,9 @@ class InfoPuntMarker(private val mapView: MapView,  private val fotoCallback: Fo
                     visitatButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(mapView.context, R.color.accessible))
                 }
         }
-        
-        if (PuntRepository.teFoto(punt.numero)) {
+
+        val uriFoto = PuntRepository.getFotoUriByNumero(punt.numero)
+        if (!uriFoto.isNullOrEmpty()) {
             foto.visibility = View.VISIBLE
             afegirfoto.visibility = View.VISIBLE
             Glide.with(context).load(PuntRepository.getFotoUriByNumero(punt.numero)).into(foto).clearOnDetach()
@@ -150,6 +161,42 @@ class InfoPuntMarker(private val mapView: MapView,  private val fotoCallback: Fo
         mapView.setOnClickListener {close()}
 
         closeAllInfoWindowsOn(mapView)
+    }
+
+    private fun gestionarEstrelles(numeroPunt: String, notaActual: Int) {
+        val estrelles = listOf<ImageButton>(
+            mView.findViewById(R.id.star1),
+            mView.findViewById(R.id.star2),
+            mView.findViewById(R.id.star3),
+            mView.findViewById(R.id.star4),
+            mView.findViewById(R.id.star5)
+        )
+
+
+        // Función para pintar las estrellas según la nota
+        fun pintarEstrelles(nota: Int) {
+            estrelles.forEachIndexed { index, button ->
+                val icon = if (index < nota) R.drawable.baseline_star_24 else R.drawable.baseline_star_border_24
+                button.setImageResource(icon)
+                // Opcional: poner el color de la ruta
+            }
+        }
+
+        // Inicializar con la nota que ya tenga guardada
+        pintarEstrelles(notaActual)
+        var notaviva = notaActual
+        // Configurar el click para cada estrella
+        estrelles.forEachIndexed { index, button ->
+            button.setOnClickListener {
+                val novaNota = index + 1
+                pintarEstrelles(novaNota)
+
+                // Guardar en la base de datos
+                CoroutineScope(Dispatchers.IO).launch {
+                    PuntRepository.updateEstrelles(numeroPunt, novaNota)
+                }
+            }
+        }
     }
 
     private fun getColorPerRuta(ruta: String, visitat: Boolean): Int {

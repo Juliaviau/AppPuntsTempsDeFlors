@@ -110,4 +110,36 @@ object PuntRepository {
             puntsVisitats.toList()
         }
     }
+    fun updateEstrelles(numero: String, estrelles: Int) {
+        /*CoroutineScope(Dispatchers.IO).launch {
+            database.puntsDao()?.updateEstrelles(numero, estrelles)
+            Log.i("ACtuanota", numero + " " + estrelles);
+        }//puntsVisitats.updateEstrelles(num, estrelles)*/
+
+
+
+
+        CoroutineScope(Dispatchers.IO).launch {
+            // 1. Actualitzem la Base de Dades (Room)
+            database.puntsDao()?.updateEstrelles(numero, estrelles)
+
+            // 2. Actualitzem la llista en memòria perquè el "get" sigui instantani
+            synchronized(puntsVisitats) {
+                val puntEnMemoria = puntsVisitats.find { it.numero == numero }
+                puntEnMemoria?.let {
+                    it.estrelles = estrelles // Ara la llista ja té la nota nova
+                    Log.i("PuntRepository", "Memòria actualitzada: Punt $numero ara té $estrelles estrelles")
+                }
+            }
+        }
+
+    }
+
+    fun getEstrellesByNumero(numero: String): Int? {
+        return synchronized(puntsVisitats) {
+            val nota = puntsVisitats.find { it.numero == numero }?.estrelles ?: 0
+            Log.i("GETNOTA", "Llegint nota de memòria per al punt $numero: $nota")
+            nota // Aquesta és l'última línia, és el que retorna el synchronized
+        }
+    }
 }

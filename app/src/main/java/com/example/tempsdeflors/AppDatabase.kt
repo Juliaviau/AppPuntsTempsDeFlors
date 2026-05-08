@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import kotlin.concurrent.Volatile
 
-@Database(entities = [PuntsEntity::class],  version = 2)
+@Database(entities = [PuntsEntity::class],  version = 3)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun puntsDao(): PuntsDao?
 

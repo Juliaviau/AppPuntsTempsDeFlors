@@ -10,5 +10,6 @@ data class Punts(
     val numero: String,
     val data: String,
     var visitat: String,
-    val foto: String
+    val foto: String,
+    val estrelles: Int
 )

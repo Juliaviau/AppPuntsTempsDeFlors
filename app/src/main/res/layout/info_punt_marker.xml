@@ -22,12 +22,28 @@
             android:text="No visitat"
             android:id="@+id/visitatono"/>
 
+        <LinearLayout
+            android:id="@+id/layout_estrelles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_below="@id/visitatono"
+            android:padding="4dp">
+
+            <ImageButton android:id="@+id/star1" style="@style/EstrellaStyle" />
+            <ImageButton android:id="@+id/star2" style="@style/EstrellaStyle" />
+            <ImageButton android:id="@+id/star3" style="@style/EstrellaStyle" />
+            <ImageButton android:id="@+id/star4" style="@style/EstrellaStyle" />
+            <ImageButton android:id="@+id/star5" style="@style/EstrellaStyle" />
+        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="4dp"
             android:id="@+id/ruta"
-            android:layout_below="@id/visitatono"
+            android:layout_below="@id/layout_estrelles"
             android:textStyle="bold"
             android:textSize="18sp"
             android:text="Ruta 2"/>

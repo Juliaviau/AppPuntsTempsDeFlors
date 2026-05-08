@@ -505,7 +505,7 @@ fun OsmMapView() {
             val mapView = MapView(context).apply {
                 setTileSource(TileSourceFactory.MAPNIK)
                 setMultiTouchControls(true)
-                val limits = BoundingBox(41.998, 2.845, 41.960, 2.790)
+                val limits = BoundingBox(42.048, 2.895, 41.940, 2.740)
                 setScrollableAreaLimitDouble(limits)
                 setHorizontalMapRepetitionEnabled(false)
                 setVerticalMapRepetitionEnabled(false)

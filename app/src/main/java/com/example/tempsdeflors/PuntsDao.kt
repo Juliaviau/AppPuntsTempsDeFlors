@@ -33,4 +33,10 @@ interface PuntsDao {
     @Query("SELECT fotoUri FROM punts WHERE numero = :numero")
     fun getFotoUriByNumero(numero: String): String?
 
+    @Query("UPDATE punts SET estrelles = :notes WHERE numero = :numero")
+    fun updateEstrelles(numero: String, notes: Int)
+
+    @Query("SELECT estrelles FROM punts WHERE numero = :numero")
+    fun getEstrellesByNumero(numero: String): Int?
+
 }
